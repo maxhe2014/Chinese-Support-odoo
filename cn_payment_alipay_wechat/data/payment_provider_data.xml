@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="1">
         <!-- 支付宝支付提供商 -->
-        <record id="payment_provider_alipay" model="payment.provider">
+        <record id="payment_provider_alipay" model="payment.provider.alipay">
             <field name="name">支付宝</field>
             <field name="code">alipay</field>
             <field name="state">disabled</field>
@@ -11,21 +11,15 @@
             <field name="allow_express_checkout">False</field>
             <field name="maximum_amount">1000000.00</field>
             <field name="capture_manually">False</field>
-            <field name="support_refund">True</field>
-            <field name="support_authorization">False</field>
-            <field name="support_tokenization">False</field>
-            <field name="support_fees">True</field>
-            <field name="support_manual_capture">False</field>
             <field name="pre_msg">您将跳转到支付宝完成支付</field>
             <field name="pending_msg">等待支付宝支付确认</field>
             <field name="auth_msg">支付宝支付已授权</field>
             <field name="done_msg">支付宝支付成功</field>
             <field name="cancel_msg">支付宝支付已取消</field>
-            <field name="error_msg">支付宝支付失败，请重试</field>
         </record>
 
         <!-- 微信支付提供商 -->
-        <record id="payment_provider_wechatpay" model="payment.provider">
+        <record id="payment_provider_wechatpay" model="payment.provider.wechatpay">
             <field name="name">微信支付</field>
             <field name="code">wechatpay</field>
             <field name="state">disabled</field>
@@ -34,17 +28,11 @@
             <field name="allow_express_checkout">False</field>
             <field name="maximum_amount">1000000.00</field>
             <field name="capture_manually">False</field>
-            <field name="support_refund">True</field>
-            <field name="support_authorization">False</field>
-            <field name="support_tokenization">False</field>
-            <field name="support_fees">True</field>
-            <field name="support_manual_capture">False</field>
             <field name="pre_msg">您将使用微信支付完成付款</field>
             <field name="pending_msg">等待微信支付确认</field>
             <field name="auth_msg">微信支付已授权</field>
             <field name="done_msg">微信支付成功</field>
             <field name="cancel_msg">微信支付已取消</field>
-            <field name="error_msg">微信支付失败，请重试</field>
         </record>
 
         <!-- 支付方法关联 -->
@@ -52,23 +40,15 @@
             <field name="name">支付宝</field>
             <field name="code">alipay</field>
             <field name="provider_ids" eval="[(4, ref('payment_provider_alipay'))]"/>
-            <field name="image" type="base64" file="cn_payment_alipay_wechat/static/description/alipay.png"/>
         </record>
 
         <record id="payment_method_wechatpay" model="payment.method">
             <field name="name">微信支付</field>
             <field name="code">wechatpay</field>
             <field name="provider_ids" eval="[(4, ref('payment_provider_wechatpay'))]"/>
-            <field name="image" type="base64" file="cn_payment_alipay_wechat/static/description/wechatpay.png"/>
         </record>
 
         <!-- 货币支持 -->
-        <function model="payment.provider" name="_sync_currencies">
-            <value eval="[ref('payment_provider_alipay')]"/>
-        </function>
-        
-        <function model="payment.provider" name="_sync_currencies">
-            <value eval="[ref('payment_provider_wechatpay')]"/>
-        </function>
+        <!-- 在Odoo 17中，货币同步通过计算字段自动处理，无需手动调用函数 -->
     </data>
 </odoo>

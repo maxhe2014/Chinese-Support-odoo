@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_payment_provider_alipay,payment.provider.alipay,model_payment_provider,base.group_system,1,1,1,1
-access_payment_provider_wechatpay,payment.provider.wechatpay,model_payment_provider,base.group_system,1,1,1,1
+access_payment_provider_alipay,payment.provider.alipay,model_payment_provider_alipay,base.group_system,1,1,1,1
+access_payment_provider_wechatpay,payment.provider.wechatpay,model_payment_provider_wechatpay,base.group_system,1,1,1,1

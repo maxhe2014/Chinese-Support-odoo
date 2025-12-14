@@ -262,24 +262,297 @@
                                 // 提交支付请求
                                 fetch('/payment/alipay/payment', {
                                     method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-Odoo-Session-Id': odoo.session_id
-                                    },
-                                    body: JSON.stringify(transactionData)
-                                })
-                                .then(response => response.json())
                                 .then(data => {
-                                    if (data.success && data.payment_url) {
+                                    if (data.success &amp;&amp; data.payment_url) {
                                         // 跳转到支付宝支付页面
                                         window.location.href = data.payment_url;
                                     } else {
-                                        alert('支付请求失败: ' + (data.message || '未知错误'));
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
                                     }
                                 })
                                 .catch(error => {
-                                    console.error('支付请求错误:', error);
-                                    alert('支付请求发生错误，请重试');
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
+                                });
+                            });
+                        });
+                                .then(data => {
+                                    if (data.success &amp;&amp; data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert("支付请求失败: " + (data.message || "未知错误"));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("支付请求错误:", error);
+                                    alert("支付请求发生错误，请重试");
                                 });
                             });
                         });

@@ -27,14 +27,38 @@ from datetime import timedelta
 class PaymentProviderAlipay(models.Model):
     """支付宝支付提供商"""
     
-    _name = 'payment.provider'
-    _inherit = ['payment.provider', 'cn_payment_alipay_wechat.payment_provider']
+    _name = 'payment.provider.alipay'
+    _inherit = ['payment.provider', 'cn.payment.provider']
     _description = '支付宝支付提供商'
     
     # 支付宝特定配置字段
     code = fields.Selection(
         selection_add=[('alipay', '支付宝')],
         ondelete={'alipay': 'set default'}
+    )
+    
+    # 显式定义available_country_ids字段以避免继承冲突
+    available_country_ids = fields.Many2many(
+        string="可用国家",
+        comodel_name='res.country',
+        help="此支付提供商可用的国家。留空表示在所有国家都可用。",
+        relation='payment_alipay_country_rel',
+        column1='payment_alipay_id',
+        column2='country_id',
+    )
+    
+    # 显式定义available_currency_ids字段以避免继承冲突
+    available_currency_ids = fields.Many2many(
+        string="可用货币",
+        comodel_name='res.currency',
+        help="此支付提供商可用的货币。留空表示支持所有货币。",
+        relation='payment_alipay_currency_rel',
+        column1='payment_alipay_id',
+        column2='currency_id',
+        compute='_compute_available_currency_ids',
+        store=True,
+        readonly=False,
+        context={'active_test': False},
     )
     
     alipay_app_id = fields.Char(
@@ -388,3 +412,15 @@ class PaymentProviderAlipay(models.Model):
                     'sticky': False,
                 }
             }
+    
+    @api.depends('code')
+    def _compute_available_currency_ids(self):
+        """计算支付宝支付提供商支持的货币"""
+        all_currencies = self.env['res.currency'].with_context(active_test=False).search([])
+        for provider in self:
+            # 支付宝主要支持人民币，但也可以支持其他货币
+            supported_currencies = self.env['res.currency'].search([('name', '=', 'CNY')])
+            if supported_currencies:
+                provider.available_currency_ids = supported_currencies
+            else:
+                provider.available_currency_ids = None

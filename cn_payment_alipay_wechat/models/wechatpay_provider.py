@@ -26,14 +26,38 @@ except ImportError:
 class PaymentProviderWeChatPay(models.Model):
     """微信支付提供商"""
     
-    _name = 'payment.provider'
-    _inherit = ['payment.provider', 'cn_payment_alipay_wechat.payment_provider']
+    _name = 'payment.provider.wechatpay'
+    _inherit = ['payment.provider', 'cn.payment.provider']
     _description = '微信支付提供商'
     
     # 微信支付特定配置字段
     code = fields.Selection(
         selection_add=[('wechatpay', '微信支付')],
         ondelete={'wechatpay': 'set default'}
+    )
+    
+    # 显式定义available_country_ids字段以避免继承冲突
+    available_country_ids = fields.Many2many(
+        string="可用国家",
+        comodel_name='res.country',
+        help="此支付提供商可用的国家。留空表示在所有国家都可用。",
+        relation='payment_wechatpay_country_rel',
+        column1='payment_wechatpay_id',
+        column2='country_id',
+    )
+    
+    # 显式定义available_currency_ids字段以避免继承冲突
+    available_currency_ids = fields.Many2many(
+        string="可用货币",
+        comodel_name='res.currency',
+        help="此支付提供商可用的货币。留空表示支持所有货币。",
+        relation='payment_wechatpay_currency_rel',
+        column1='payment_wechatpay_id',
+        column2='currency_id',
+        compute='_compute_available_currency_ids',
+        store=True,
+        readonly=False,
+        context={'active_test': False},
     )
     
     wechatpay_mch_id = fields.Char(
@@ -522,6 +546,18 @@ class PaymentProviderWeChatPay(models.Model):
                     'sticky': False,
                 }
             }
+    
+    @api.depends('code')
+    def _compute_available_currency_ids(self):
+        """计算微信支付提供商支持的货币"""
+        all_currencies = self.env['res.currency'].with_context(active_test=False).search([])
+        for provider in self:
+            # 微信支付主要支持人民币
+            supported_currencies = self.env['res.currency'].search([('name', '=', 'CNY')])
+            if supported_currencies:
+                provider.available_currency_ids = supported_currencies
+            else:
+                provider.available_currency_ids = None
 
 
 # 导入timedelta

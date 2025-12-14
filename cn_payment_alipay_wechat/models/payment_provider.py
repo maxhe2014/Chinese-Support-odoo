@@ -6,11 +6,10 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class CNPaymentProvider(models.Model):
-    """中国支付提供商基类"""
+class CNPaymentProvider(models.AbstractModel):
+    """中国支付提供商基类（抽象模型）"""
     
-    _name = 'payment.provider'
-    _inherit = ['payment.provider']
+    _name = 'cn.payment.provider'
     _description = '中国支付提供商基类'
     
     # 通用配置字段
@@ -77,18 +76,22 @@ class CNPaymentProvider(models.Model):
     
     def _log_payment_info(self, message, transaction_ref=None):
         """记录支付日志"""
-        log_message = f"[{self.code}] {message}"
+        # 使用模型名称作为标识，因为code字段在子类中定义
+        model_name = self._name
+        log_message = f"[{model_name}] {message}"
         if transaction_ref:
             log_message += f" - 交易号: {transaction_ref}"
         _logger.info(log_message)
     
     def _log_payment_error(self, message, transaction_ref=None):
         """记录支付错误"""
-        log_message = f"[{self.code}] {message}"
+        # 使用模型名称作为标识，因为code字段在子类中定义
+        model_name = self._name
+        log_message = f"[{model_name}] {message}"
         if transaction_ref:
             log_message += f" - 交易号: {transaction_ref}"
         _logger.error(log_message)
-    
+
     # 安全验证
     def _validate_configuration(self):
         """验证配置完整性"""
