@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 支付宝支付提供商表单视图 -->
+        <record id="view_payment_provider_form_alipay" model="ir.ui.view">
+            <field name="name">payment.provider.form.alipay</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.view_payment_provider_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='credentials']" position="inside">
+                    <div class="alert alert-info" role="alert" attrs="{'invisible': [('code', '!=', 'alipay')]}">
+                        <strong>支付宝配置说明：</strong>
+                        <br/>
+                        1. 登录支付宝开放平台获取应用ID(APP_ID)
+                        <br/>
+                        2. 生成商户应用公钥和私钥
+                        <br/>
+                        3. 在支付宝后台配置应用公钥
+                        <br/>
+                        4. 获取支付宝公钥用于验签
+                    </div>
+                    
+                    <group attrs="{'invisible': [('code', '!=', 'alipay')]}" string="支付宝配置">
+                        <group>
+                            <field name="sandbox_mode"/>
+                            <field name="alipay_payment_method"/>
+                        </group>
+                        
+                        <group string="应用配置">
+                            <field name="alipay_app_id" required="1"/>
+                            <field name="alipay_encrypt_key"/>
+                        </group>
+                        
+                        <group string="密钥配置">
+                            <field name="alipay_private_key" widget="textarea" nolabel="1" placeholder="请输入商户私钥内容..." required="1"/>
+                            <field name="alipay_public_key" widget="textarea" nolabel="1" placeholder="请输入支付宝公钥内容..." required="1"/>
+                        </group>
+                    </group>
+                </xpath>
+                
+                <!-- 添加测试按钮 -->
+                <xpath expr="//button[@name='action_toggle_state']" position="after">
+                    <button name="action_test_alipay" type="object" string="测试支付宝连接" class="btn-secondary" attrs="{'invisible': [('code', '!=', 'alipay')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- 微信支付提供商表单视图 -->
+        <record id="view_payment_provider_form_wechatpay" model="ir.ui.view">
+            <field name="name">payment.provider.form.wechatpay</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.view_payment_provider_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='credentials']" position="inside">
+                    <div class="alert alert-info" role="alert" attrs="{'invisible': [('code', '!=', 'wechatpay')]}">
+                        <strong>微信支付配置说明：</strong>
+                        <br/>
+                        1. 登录微信支付商户平台获取商户号(MCHID)
+                        <br/>
+                        2. 设置API密钥(V3)
+                        <br/>
+                        3. 申请并下载API证书
+                        <br/>
+                        4. 配置应用ID(APP_ID)
+                    </div>
+                    
+                    <group attrs="{'invisible': [('code', '!=', 'wechatpay')]}" string="微信支付配置">
+                        <group>
+                            <field name="sandbox_mode"/>
+                            <field name="wechatpay_payment_method"/>
+                        </group>
+                        
+                        <group string="商户配置">
+                            <field name="wechatpay_mch_id" required="1"/>
+                            <field name="wechatpay_app_id" required="1"/>
+                            <field name="wechatpay_api_v3_key" required="1" password="True"/>
+                        </group>
+                        
+                        <group string="证书配置">
+                            <field name="wechatpay_cert_serial_no"/>
+                            <field name="wechatpay_private_key" widget="textarea" nolabel="1" placeholder="请输入商户私钥内容..."/>
+                            <field name="wechatpay_platform_cert" widget="textarea" nolabel="1" placeholder="平台证书（自动获取）" readonly="1"/>
+                            <field name="wechatpay_platform_cert_expire_time" readonly="1"/>
+                        </group>
+                    </group>
+                </xpath>
+                
+                <!-- 添加证书更新按钮 -->
+                <xpath expr="//button[@name='action_toggle_state']" position="after">
+                    <button name="action_update_wechatpay_cert" type="object" string="更新平台证书" class="btn-secondary" attrs="{'invisible': [('code', '!=', 'wechatpay')]}"/>
+                    <button name="action_test_wechatpay" type="object" string="测试微信支付连接" class="btn-secondary" attrs="{'invisible': [('code', '!=', 'wechatpay')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- 支付提供商列表视图 -->
+        <record id="view_payment_provider_tree" model="ir.ui.view">
+            <field name="name">payment.provider.tree.cn</field>
+            <field name="model">payment.provider</field>
+            <field name="inherit_id" ref="payment.view_payment_provider_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="code" invisible="1"/>
+                    <field name="sandbox_mode" string="沙箱模式"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- 动作扩展 -->
+        <record id="action_payment_provider" model="ir.actions.act_window">
+            <field name="name">支付提供商</field>
+            <field name="res_model">payment.provider</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_payment_provider_tree"/>
+            <field name="search_view_id" ref="payment.view_payment_provider_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    配置支付宝和微信支付提供商
+                </p>
+                <p>
+                    点击创建配置新的支付提供商，或编辑现有配置。
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

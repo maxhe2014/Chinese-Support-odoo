@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 支付宝支付页面模板 -->
+        <template id="alipay_payment_form" name="支付宝支付" inherit_id="payment.payment_form">
+            <xpath expr="//div[@t-attf-class='btn-group w-100 #{payment_form_acquirer_button_group_class}']" position="replace">
+                <div t-if="provider.code == 'alipay'" class="btn-group w-100">
+                    <button type="button" class="btn btn-primary" t-att-data-provider-id="provider.id">
+                        <i class="fa fa-credit-card"/> 前往支付宝支付
+                    </button>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- 微信支付页面模板 -->
+        <template id="wechatpay_payment_form" name="微信支付" inherit_id="payment.payment_form">
+            <xpath expr="//div[@t-attf-class='btn-group w-100 #{payment_form_acquirer_button_group_class}']" position="replace">
+                <div t-if="provider.code == 'wechatpay'" class="btn-group w-100">
+                    <button t-if="provider.wechatpay_payment_method == 'NATIVE'" type="button" class="btn btn-primary" t-att-data-provider-id="provider.id">
+                        <i class="fa fa-qrcode"/> 生成微信支付二维码
+                    </button>
+                    <button t-if="provider.wechatpay_payment_method != 'NATIVE'" type="button" class="btn btn-primary" t-att-data-provider-id="provider.id">
+                        <i class="fa fa-wechat"/> 微信支付
+                    </button>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- 微信支付二维码页面 -->
+        <template id="wechatpay_qrcode" name="微信支付二维码">
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure">
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">
+                                            <i class="fa fa-qrcode"/> 微信支付
+                                        </h3>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <div t-if="transaction.state == 'pending'">
+                                            <h4>请使用微信扫描二维码完成支付</h4>
+                                            <div class="qrcode-container mb-4">
+                                                <!-- 这里应该显示真正的二维码 -->
+                                                <div class="placeholder-qrcode" style="width: 200px; height: 200px; border: 2px dashed #ccc; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                                                    <span>二维码区域</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted">订单号: <strong t-esc="transaction.reference"/></p>
+                                            <p class="text-muted">金额: <strong t-esc="'¥%.2f' % transaction.amount"/></p>
+                                            
+                                            <div class="alert alert-info">
+                                                <p>支付状态: <span id="payment-status">等待支付</span></p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-success" onclick="checkPaymentStatus()">
+                                                刷新支付状态
+                                            </button>
+                                        </div>
+                                        
+                                        <div t-if="transaction.state == 'done'" class="alert alert-success">
+                                            <h4><i class="fa fa-check-circle"/> 支付成功！</h4>
+                                            <p>您的订单已支付成功，感谢您的购买。</p>
+                                            <a href="/shop" class="btn btn-primary">返回商城</a>
+                                        </div>
+                                        
+                                        <div t-if="transaction.state == 'cancel'" class="alert alert-warning">
+                                            <h4><i class="fa fa-exclamation-triangle"/> 支付已取消</h4>
+                                            <p>支付已被取消，您可以重新尝试支付。</p>
+                                            <a href="/shop/payment" class="btn btn-primary">重新支付</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function checkPaymentStatus() {
+                        var transactionRef = '<t t-esc="transaction.reference"/>';
+                        
+                        fetch('/payment/status/' + transactionRef, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                var statusElement = document.getElementById('payment-status');
+                                statusElement.textContent = getStatusText(data.state);
+                                
+                                if (data.state === 'done') {
+                                    // 支付成功，刷新页面
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else if (data.state === 'cancel') {
+                                    // 支付取消
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 2000);
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('检查支付状态失败:', error);
+                        });
+                    }
+                    
+                    function getStatusText(state) {
+                        switch(state) {
+                            case 'pending': return '等待支付';
+                            case 'done': return '支付成功';
+                            case 'cancel': return '支付取消';
+                            case 'error': return '支付失败';
+                            default: return '未知状态';
+                        }
+                    }
+                    
+                    // 自动检查支付状态
+                    setInterval(checkPaymentStatus, 5000);
+                </script>
+            </t>
+        </template>
+
+        <!-- 支付宝支付页面 -->
+        <template id="alipay_qrcode" name="支付宝支付二维码">
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure">
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">
+                                            <i class="fa fa-qrcode"/> 支付宝支付
+                                        </h3>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <div t-if="transaction.state == 'pending'">
+                                            <h4>请使用支付宝扫描二维码完成支付</h4>
+                                            <div class="qrcode-container mb-4">
+                                                <!-- 这里应该显示真正的二维码 -->
+                                                <div class="placeholder-qrcode" style="width: 200px; height: 200px; border: 2px dashed #ccc; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                                                    <span>二维码区域</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted">订单号: <strong t-esc="transaction.reference"/></p>
+                                            <p class="text-muted">金额: <strong t-esc="'¥%.2f' % transaction.amount"/></p>
+                                            
+                                            <div class="alert alert-info">
+                                                <p>支付状态: <span id="payment-status">等待支付</span></p>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-success" onclick="checkPaymentStatus()">
+                                                刷新支付状态
+                                            </button>
+                                        </div>
+                                        
+                                        <div t-if="transaction.state == 'done'" class="alert alert-success">
+                                            <h4><i class="fa fa-check-circle"/> 支付成功！</h4>
+                                            <p>您的订单已支付成功，感谢您的购买。</p>
+                                            <a href="/shop" class="btn btn-primary">返回商城</a>
+                                        </div>
+                                        
+                                        <div t-if="transaction.state == 'cancel'" class="alert alert-warning">
+                                            <h4><i class="fa fa-exclamation-triangle"/> 支付已取消</h4>
+                                            <p>支付已被取消，您可以重新尝试支付。</p>
+                                            <a href="/shop/payment" class="btn btn-primary">重新支付</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    function checkPaymentStatus() {
+                        var transactionRef = '<t t-esc="transaction.reference"/>';
+                        
+                        fetch('/payment/status/' + transactionRef, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                var statusElement = document.getElementById('payment-status');
+                                statusElement.textContent = getStatusText(data.state);
+                                
+                                if (data.state === 'done') {
+                                    // 支付成功，刷新页面
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else if (data.state === 'cancel') {
+                                    // 支付取消
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 2000);
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('检查支付状态失败:', error);
+                        });
+                    }
+                    
+                    function getStatusText(state) {
+                        switch(state) {
+                            case 'pending': return '等待支付';
+                            case 'done': return '支付成功';
+                            case 'cancel': return '支付取消';
+                            case 'error': return '支付失败';
+                            default: return '未知状态';
+                        }
+                    }
+                    
+                    // 自动检查支付状态
+                    setInterval(checkPaymentStatus, 5000);
+                </script>
+            </t>
+        </template>
+
+        <!-- 支付状态检查脚本 -->
+        <template id="payment_status_check" name="支付状态检查" inherit_id="website_sale.payment">
+            <xpath expr="//script[last()]" position="after">
+                <script>
+                    // 支付宝支付处理
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var alipayButtons = document.querySelectorAll('button[data-provider-id]');
+                        
+                        alipayButtons.forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                var providerId = this.getAttribute('data-provider-id');
+                                var form = this.closest('form');
+                                
+                                // 获取交易信息
+                                var transactionData = {
+                                    'provider_id': providerId,
+                                    'amount': form.querySelector('[name="amount"]').value,
+                                    'currency_id': form.querySelector('[name="currency_id"]').value,
+                                    'reference': form.querySelector('[name="reference"]').value,
+                                    'partner_id': form.querySelector('[name="partner_id"]').value,
+                                    'landing_route': form.querySelector('[name="landing_route"]').value
+                                };
+                                
+                                // 提交支付请求
+                                fetch('/payment/alipay/payment', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-Odoo-Session-Id': odoo.session_id
+                                    },
+                                    body: JSON.stringify(transactionData)
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success && data.payment_url) {
+                                        // 跳转到支付宝支付页面
+                                        window.location.href = data.payment_url;
+                                    } else {
+                                        alert('支付请求失败: ' + (data.message || '未知错误'));
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('支付请求错误:', error);
+                                    alert('支付请求发生错误，请重试');
+                                });
+                            });
+                        });
+                    });
+                </script>
+            </xpath>
+        </template>
+    </data>
+</odoo>
