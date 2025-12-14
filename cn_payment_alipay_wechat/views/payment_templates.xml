@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- 支付宝支付页面模板 -->
-        <template id="alipay_payment_form" name="支付宝支付" inherit_id="payment.payment_form">
-            <xpath expr="//div[@t-attf-class='btn-group w-100 #{payment_form_acquirer_button_group_class}']" position="replace">
-                <div t-if="provider.code == 'alipay'" class="btn-group w-100">
+        <template id="alipay_payment_form" name="支付宝支付" inherit_id="payment.form">
+            <xpath expr="//div[@id='o_payment_form_options']" position="inside">
+                <div t-if="provider.code == 'alipay'" class="btn-group w-100 mt-3">
                     <button type="button" class="btn btn-primary" t-att-data-provider-id="provider.id">
                         <i class="fa fa-credit-card"/> 前往支付宝支付
                     </button>
@@ -13,9 +13,9 @@
         </template>
 
         <!-- 微信支付页面模板 -->
-        <template id="wechatpay_payment_form" name="微信支付" inherit_id="payment.payment_form">
-            <xpath expr="//div[@t-attf-class='btn-group w-100 #{payment_form_acquirer_button_group_class}']" position="replace">
-                <div t-if="provider.code == 'wechatpay'" class="btn-group w-100">
+        <template id="wechatpay_payment_form" name="微信支付" inherit_id="payment.form">
+            <xpath expr="//div[@id='o_payment_form_options']" position="inside">
+                <div t-if="provider.code == 'wechatpay'" class="btn-group w-100 mt-3">
                     <button t-if="provider.wechatpay_payment_method == 'NATIVE'" type="button" class="btn btn-primary" t-att-data-provider-id="provider.id">
                         <i class="fa fa-qrcode"/> 生成微信支付二维码
                     </button>
