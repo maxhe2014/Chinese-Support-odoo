@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0-20231105\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-23 21:30+0000\n"
-"PO-Revision-Date: 2023-11-24 06:16+0800\n"
+"PO-Revision-Date: 2024-01-01 00:00+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_TW\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid ""
 "\"End Date\" of the budget line should be included in the Period of the "
 "budget"
-msgstr "預算項目的「結束日期」應包含在預算期間"
+msgstr "预算项目的"结束日期"应包含在预算期间"
 
 #. module: om_account_budget
 #. odoo-python
@@ -33,7 +33,7 @@ msgstr "預算項目的「結束日期」應包含在預算期間"
 msgid ""
 "\"Start Date\" of the budget line should be included in the Period of the "
 "budget"
-msgstr "預算項目的「開始日期」應包含在預算期間"
+msgstr "预算项目的"开始日期"应包含在预算期间"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_kanban
@@ -48,27 +48,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__account_ids
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_budget_post_form
 msgid "Accounts"
-msgstr "會計帳戶"
+msgstr "会计账户"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__percentage
 msgid "Achievement"
-msgstr "達成"
+msgstr "达成率"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_needaction
 msgid "Action Needed"
-msgstr "需採取行動"
+msgstr "需采取行动"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget_lines__practical_amount
 msgid "Amount really earned/spent."
-msgstr "實際賺取/花費的金額。"
+msgstr "实际赚取/花费的金额。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget_lines__theoritical_amount
 msgid "Amount you are supposed to have earned/spent at this date."
-msgstr "您在該日期應賺取/支出的金額。"
+msgstr "您在该日期应赚取/支出的金额。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget_lines__planned_amount
@@ -76,7 +76,7 @@ msgid ""
 "Amount you plan to earn/spend. Record a positive amount if it is a revenue "
 "and a negative amount if it is a cost."
 msgstr ""
-"您計劃賺取/支出的金額。如果是收入，則記錄正數；如果是成本，則記錄負數。"
+"您计划赚取/支出的金额。如果是收入，则记录正数；如果是成本，则记录负数。"
 
 #. module: om_account_budget
 #: model:ir.model,name:om_account_budget.model_account_analytic_account
@@ -87,7 +87,7 @@ msgstr "分析科目"
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__analytic_plan_id
 msgid "Analytic Plan"
-msgstr "分析計劃"
+msgstr "分析计划"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
@@ -97,7 +97,7 @@ msgstr "批准"
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_attachment_count
 msgid "Attachment Count"
-msgstr "附件數"
+msgstr "附件数"
 
 #. module: om_account_budget
 #: model:ir.model,name:om_account_budget.model_crossovered_budget
@@ -106,18 +106,18 @@ msgstr "附件數"
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_tree
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_search
 msgid "Budget"
-msgstr "預算"
+msgstr "预算"
 
 #. module: om_account_budget
 #: model:ir.actions.act_window,name:om_account_budget.act_account_analytic_account_cb_lines
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Budget Items"
-msgstr "預算項目"
+msgstr "预算项目"
 
 #. module: om_account_budget
 #: model:ir.model,name:om_account_budget.model_crossovered_budget_lines
 msgid "Budget Line"
-msgstr "預算明細"
+msgstr "预算明细"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_analytic_account__crossovered_budget_line
@@ -129,18 +129,18 @@ msgstr "預算明細"
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_search
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_tree
 msgid "Budget Lines"
-msgstr "預算明細"
+msgstr "预算明细"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__name
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Budget Name"
-msgstr "預算名稱"
+msgstr "预算名称"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__crossovered_budget_state
 msgid "Budget State"
-msgstr "預算國家"
+msgstr "预算状态"
 
 #. module: om_account_budget
 #: model:ir.model,name:om_account_budget.model_account_budget_post
@@ -149,31 +149,31 @@ msgstr "預算國家"
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_budget_post_search
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_budget_post_tree
 msgid "Budgetary Position"
-msgstr "預算狀況"
+msgstr "预算状况"
 
 #. module: om_account_budget
 #: model:ir.actions.act_window,name:om_account_budget.open_budget_post_form
 #: model:ir.ui.menu,name:om_account_budget.menu_budget_post_form
 msgid "Budgetary Positions"
-msgstr "預算項目"
+msgstr "预算项目"
 
 #. module: om_account_budget
 #: model:ir.actions.act_window,name:om_account_budget.act_crossovered_budget_view
 #: model:ir.ui.menu,name:om_account_budget.menu_act_crossovered_budget_view
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_search
 msgid "Budgets"
-msgstr "預算"
+msgstr "预算"
 
 #. module: om_account_budget
 #: model:ir.actions.act_window,name:om_account_budget.act_crossovered_budget_lines_view
 #: model:ir.ui.menu,name:om_account_budget.menu_act_crossovered_budget_lines_view
 msgid "Budgets Analysis"
-msgstr "預算分析"
+msgstr "预算分析"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Cancel Budget"
-msgstr "取消預算"
+msgstr "取消预算"
 
 #. module: om_account_budget
 #: model:ir.model.fields.selection,name:om_account_budget.selection__crossovered_budget__state__cancel
@@ -183,7 +183,7 @@ msgstr "已取消"
 #. module: om_account_budget
 #: model_terms:ir.actions.act_window,help:om_account_budget.act_crossovered_budget_view
 msgid "Click to create a new budget."
-msgstr "點選以建立新預算。"
+msgstr "点击以创建新预算。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__company_id
@@ -195,45 +195,45 @@ msgstr "公司"
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget_lines__percentage
 msgid ""
-"Comparison between practical and theoretical amount. This measure tells you "
-"if you are below or over budget."
-msgstr "實際金額與理論金額的比較。此指標可以告訴您是否低於或超過預算。"
+"Comparison between practical and theoretical amount. This measure tells "
+"you if you are below or over budget."
+msgstr "实际金额与理论金额的比较。此指标可以告诉您是否低于或超过预算。"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Confirm"
-msgstr "確認"
+msgstr "确认"
 
 #. module: om_account_budget
 #: model:ir.model.fields.selection,name:om_account_budget.selection__crossovered_budget__state__confirm
 msgid "Confirmed"
-msgstr "已確認"
+msgstr "已确认"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__create_uid
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__create_uid
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__create_uid
 msgid "Created by"
-msgstr "建立者"
+msgstr "创建者"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__create_date
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__create_date
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__create_date
 msgid "Created on"
-msgstr "建立於"
+msgstr "创建于"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__currency_id
 msgid "Currency"
-msgstr "幣別"
+msgstr "币种"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__display_name
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__display_name
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__display_name
 msgid "Display Name"
-msgstr "顯示名稱"
+msgstr "显示名称"
 
 #. module: om_account_budget
 #: model:ir.model.fields.selection,name:om_account_budget.selection__crossovered_budget__state__done
@@ -250,38 +250,38 @@ msgstr "草稿"
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_search
 msgid "Draft Budgets"
-msgstr "預算草案"
+msgstr "预算草案"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__date_to
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__date_to
 msgid "End Date"
-msgstr "結束日期"
+msgstr "结束日期"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Entries..."
-msgstr "細項"
+msgstr "明细"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_follower_ids
 msgid "Followers"
-msgstr "關注者"
+msgstr "关注者"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "訂閱者(合作夥伴)"
+msgstr "订阅者(合作伙伴)"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_search
 msgid "Group By"
-msgstr "分組按"
+msgstr "分组按"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__has_message
 msgid "Has Message"
-msgstr "有訊息"
+msgstr "有消息"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__id
@@ -293,53 +293,53 @@ msgstr "ID"
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr "勾選代表有新訊息需要您留意."
+msgstr "勾选代表有新消息需要您留意。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__message_has_error
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr "勾選代表有訊息發生傳送錯誤."
+msgstr "勾选代表有消息发生传送错误。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__is_above_budget
 msgid "Is Above Budget"
-msgstr "超出預算"
+msgstr "超出预算"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_is_follower
 msgid "Is Follower"
-msgstr "是訂閱者"
+msgstr "是订阅者"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__write_uid
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__write_uid
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__write_uid
 msgid "Last Updated by"
-msgstr "最後更新人"
+msgstr "最后更新人"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__write_date
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__write_date
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__write_date
 msgid "Last Updated on"
-msgstr "最後更新時間"
+msgstr "最后更新时间"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_has_error
 msgid "Message Delivery error"
-msgstr "訊息遞送錯誤"
+msgstr "消息递送错误"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_ids
 msgid "Messages"
-msgstr "訊息"
+msgstr "消息"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_account_budget_post__name
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__name
 msgid "Name"
-msgstr "名稱"
+msgstr "名称"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_search
@@ -349,22 +349,22 @@ msgstr "未取消"
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_needaction_counter
 msgid "Number of Actions"
-msgstr "動作數"
+msgstr "动作数"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_has_error_counter
 msgid "Number of errors"
-msgstr "錯誤數"
+msgstr "错误数"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "需要執行操作的訊息數量"
+msgstr "需要执行操作的消息数量"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "有發送錯誤的郵件數"
+msgstr "有发送错误的消息数"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__paid_date
@@ -374,87 +374,87 @@ msgstr "付款日期"
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Period"
-msgstr "會計期間"
+msgstr "会计期间"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__planned_amount
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Planned Amount"
-msgstr "計劃金額"
+msgstr "计划金额"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_graph
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_pivot
 msgid "Planned amount"
-msgstr "計劃金額"
+msgstr "计划金额"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__practical_amount
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Practical Amount"
-msgstr "實際金額"
+msgstr "实际金额"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_graph
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_pivot
 msgid "Practical amount"
-msgstr "實際數量"
+msgstr "实际金额"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__rating_ids
 msgid "Ratings"
-msgstr "評分"
+msgstr "评分"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Reset to Draft"
-msgstr "重設為草稿"
+msgstr "重置为草稿"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__user_id
 msgid "Responsible"
-msgstr "負責人"
+msgstr "负责人"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr "簡訊發送錯誤"
+msgstr "短信发送错误"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__date_from
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__date_from
 msgid "Start Date"
-msgstr "開始日期"
+msgstr "开始日期"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__state
 msgid "Status"
-msgstr "狀態"
+msgstr "状态"
 
 #. module: om_account_budget
 #. odoo-python
 #: code:addons/om_account_budget/models/account_budget.py:0
 #, python-format
 msgid "The budget must have at least one account."
-msgstr "預算必須至少有一個帳戶。"
+msgstr "预算必须至少有一个账户。"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget_lines__theoritical_amount
 #: model_terms:ir.ui.view,arch_db:om_account_budget.crossovered_budget_view_form
 msgid "Theoretical Amount"
-msgstr "理論金額"
+msgstr "理论金额"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_account_analytic_account_form_inherit_budget
 msgid "Theoritical Amount"
-msgstr "理論金額"
+msgstr "理论金额"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_graph
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_line_pivot
 msgid "Theoritical amount"
-msgstr "理論金額"
+msgstr "理论金额"
 
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_search
@@ -464,27 +464,27 @@ msgstr "待批准"
 #. module: om_account_budget
 #: model_terms:ir.ui.view,arch_db:om_account_budget.view_crossovered_budget_search
 msgid "To Approve Budgets"
-msgstr "待批准預算"
+msgstr "待批准预算"
 
 #. module: om_account_budget
 #: model_terms:ir.actions.act_window,help:om_account_budget.act_crossovered_budget_view
 msgid "Use budgets to compare actual with expected revenues and costs"
-msgstr "使用預算來比較實際與預期的收入和成本"
+msgstr "使用预算来比较实际与预期的收入和成本"
 
 #. module: om_account_budget
 #: model:ir.model.fields.selection,name:om_account_budget.selection__crossovered_budget__state__validate
 msgid "Validated"
-msgstr "已驗證"
+msgstr "已验证"
 
 #. module: om_account_budget
 #: model:ir.model.fields,field_description:om_account_budget.field_crossovered_budget__website_message_ids
 msgid "Website Messages"
-msgstr "網站訊息"
+msgstr "网站消息"
 
 #. module: om_account_budget
 #: model:ir.model.fields,help:om_account_budget.field_crossovered_budget__website_message_ids
 msgid "Website communication history"
-msgstr "網站溝通記錄"
+msgstr "网站沟通记录"
 
 #. module: om_account_budget
 #. odoo-python
@@ -493,4 +493,4 @@ msgstr "網站溝通記錄"
 msgid ""
 "You have to enter at least a budgetary position or analytic account on a "
 "budget line."
-msgstr "您必須在預算明細上至少輸入預算狀況或分析帳戶。"
+msgstr "您必须在预算明细上至少输入预算状况或分析账户。"
